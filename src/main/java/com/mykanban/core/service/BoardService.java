@@ -12,6 +12,7 @@ public class BoardService implements BoardServiceInterface {
     public BoardService(BoardRepositoryInterface boardRepository) {
         this.boardRepository = boardRepository;
     }
+
     @Override
     public Board createBoard(Board board) {
         return boardRepository.save(board);
