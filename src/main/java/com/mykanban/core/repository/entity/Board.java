@@ -1,21 +1,35 @@
-package com.mykanban.core.model;
+package com.mykanban.core.repository.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@Table(name = "board")
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "nom")
     private String nom;
+    @Column(name = "date_creat")
     private Date dateCreation;
+    @Column(name = "date_modif")
     private Date dateModification;
+    @OneToMany(mappedBy = "board")
+    @JsonIgnore
+    private List<Colonne> colonnes;
 
+    public Board(String boardName) {
+        this.nom = boardName;
+    }
+
+    public Board() {
+
+    }
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -33,12 +47,26 @@ public class Board {
         return dateCreation;
     }
 
+    public void setDateCreation(Date date) {
+        this.dateCreation = date;
+    }
+
     public Date getDateModification() {
         return dateModification;
+    }
+
+    public List<Colonne> getColonnes() {
+        return colonnes;
+    }
+
+    public void setColonnes(List<Colonne> colonnes) {
+        this.colonnes = colonnes;
     }
 
     @Override
     public String toString() {
         return "Board: \nID: " + id + "\nNom: " + nom + "\nDate de création: " + dateCreation + "\nDernière modification: " + dateModification;
     }
+
+
 }

@@ -1,30 +1,44 @@
 package com.mykanban.core.service;
 
-import com.mykanban.core.model.Board;
-import com.mykanban.core.repository.BoardRepositoryInterface;
+import com.mykanban.core.api.model.BoardCreationRequest;
+import com.mykanban.core.repository.BoardRepository;
+import com.mykanban.core.repository.ColonneRepository;
+import com.mykanban.core.repository.entity.Board;
+import com.mykanban.core.repository.entity.Colonne;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
-public class BoardService implements BoardServiceInterface {
+public class BoardService {
 
-    private final BoardRepositoryInterface boardRepository;
+    private final BoardRepository boardRepository;
+    private final ColonneRepository colonneRepository;
 
-    public BoardService(BoardRepositoryInterface boardRepository) {
+    public BoardService(BoardRepository boardRepository, ColonneRepository colonneRepository) {
         this.boardRepository = boardRepository;
+        this.colonneRepository = colonneRepository;
     }
 
-    @Override
-    public void createBoard(Board board) {
-        boardRepository.save(board);
+
+    public Board createBoard(BoardCreationRequest boardCreationRequest) {
+        return boardRepository.save(new Board(boardCreationRequest.nomBoard()));
     }
 
-    @Override
-    public Iterable<Board> getBoards() {
+    public List<Colonne> getColonnesByBoard(final long id) {
+        return colonneRepository.getColonneByBoard(id);
+    }
+
+    public List<Board> getBoards() {
         return boardRepository.findAll();
     }
 
-    @Override
-    public Board getBoard(long id) {
-        return boardRepository.findById(id).orElseThrow();
+    public Optional<Board> getBoard(final long id) {
+        return boardRepository.findById(id);
+    }
+
+    public void deleteBoard(final long id) {
+        boardRepository.deleteById(id);
     }
 }
