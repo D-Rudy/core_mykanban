@@ -22,7 +22,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ColonneContrllerTest {
+public class ColonneControllerTest {
     @Mock
     private TicketService ticketService;
 
