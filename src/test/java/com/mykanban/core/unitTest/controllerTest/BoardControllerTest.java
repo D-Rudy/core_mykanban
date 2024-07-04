@@ -1,4 +1,4 @@
-package com.mykanban.core;
+package com.mykanban.core.unitTest.controllerTest;
 
 import com.mykanban.core.api.controller.BoardController;
 import com.mykanban.core.api.model.BoardCreationRequest;
@@ -56,7 +56,7 @@ public class BoardControllerTest {
     }
 
     @Test
-    public void testGetBoardById_Found() {
+    public void testGetBoard() {
         long boardId = 1L;
         Board expectedBoard = new Board("My Board");
 

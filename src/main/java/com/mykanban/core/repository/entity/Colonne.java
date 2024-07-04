@@ -32,6 +32,10 @@ public class Colonne {
     public Colonne() {
     }
 
+    public Colonne(long id){
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }
