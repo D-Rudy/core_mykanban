@@ -31,6 +31,10 @@ public class Board {
 
     }
 
+    public Board(long l) {
+        this.id = l;
+    }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
