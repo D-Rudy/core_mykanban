@@ -1,4 +1,4 @@
 package com.mykanban.core.api.model;
 
-public record TicketCreationRequest(String titre, String description) {
+public record TicketCreationRequest(String title, String description) {
 }

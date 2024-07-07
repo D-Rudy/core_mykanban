@@ -10,22 +10,22 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false, name = "titre")
-    private String titre;
-    @Column(nullable = false, name = "description")
+    @jakarta.persistence.Column(nullable = false, name = "titre")
+    private String title;
+    @jakarta.persistence.Column(nullable = false, name = "description")
     private String description;
-    @Column(nullable = false, name = "priorite", columnDefinition = "int (1) default '1'")
-    private int priorite;
-    @Column(name = "date_creat")
-    private Date dateCreation;
-    @Column(name = "date_modif")
-    private Date dateModification;
+    @jakarta.persistence.Column(nullable = false, name = "priorite", columnDefinition = "int (1) default '1'")
+    private int priority;
+    @jakarta.persistence.Column(name = "date_creat")
+    private Date creation;
+    @jakarta.persistence.Column(name = "date_modif")
+    private Date lastUpdate;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "id_colonne")
     private Colonne colonne;
 
-    public Ticket(String titre, String description) {
-        this.titre = titre;
+    public Ticket(String title, String description) {
+        this.title = title;
         this.description = description;
     }
 
@@ -41,28 +41,28 @@ public class Ticket {
         return colonne;
     }
 
-    public Date getDateCreation() {
-        return dateCreation;
+    public Date getCreation() {
+        return creation;
     }
 
-    public Date getDateModification() {
-        return dateModification;
+    public Date getLastUpdate() {
+        return lastUpdate;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public int getPriorite() {
-        return priorite;
+    public int getPriority() {
+        return priority;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
     @Override
     public String toString() {
-        return "Ticket: \nID: " + id + "\nTitre: " + titre + "\nDescription: " + description + "\nPriorite: " + priorite + "\nColonne: " + colonne.getNom();
+        return "Ticket: \nID: " + id + "\nTitre: " + title + "\nDescription: " + description + "\nPriorite: " + priority + "\nColonne: " + colonne.getName();
     }
 }

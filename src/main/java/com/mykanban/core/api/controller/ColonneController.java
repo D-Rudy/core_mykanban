@@ -47,7 +47,7 @@ public class ColonneController {
 
     @DeleteMapping("/{id}")
     public void deleteColonne(@PathVariable long id) throws ColonneNotFoundException {
-        Colonne colonne = colonneService.getColonne(id).orElseThrow(() -> new ColonneNotFoundException("Colonne not found"));
-        colonneService.deleteColonne(id);
+        Colonne colonne = colonneService.getColonne(id).orElseThrow(() -> new ColonneNotFoundException("Column not found"));
+        colonneService.deleteColonne(colonne.getId());
     }
 }
