@@ -22,7 +22,7 @@ public class ColonneService {
     }
 
     public Colonne createColonne(ColonneCreationRequest colonneCreationRequest) {
-        return colonneRepository.save(new Colonne(colonneCreationRequest.nomColonne()));
+        return colonneRepository.save(new Colonne(colonneCreationRequest.colonneName()));
     }
 
     public Optional<Colonne> getColonne(final long id) {

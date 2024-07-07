@@ -20,7 +20,7 @@ public class TicketController {
     }
 
     @PostMapping
-    public Ticket createColonne(@RequestBody TicketCreationRequest creationRequest) {
+    public Ticket createTicket(@RequestBody TicketCreationRequest creationRequest) {
         return ticketService.createTicket(creationRequest);
     }
 

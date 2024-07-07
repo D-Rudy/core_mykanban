@@ -12,12 +12,12 @@ public class Colonne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "nom")
-    private String nom;
-    @Column(name = "date_creat")
-    private Date dateCreation;
-    @Column(name = "date_modif")
-    private Date dateModification;
+    @jakarta.persistence.Column(name = "nom")
+    private String name;
+    @jakarta.persistence.Column(name = "date_creat")
+    private Date creation;
+    @jakarta.persistence.Column(name = "date_modif")
+    private Date lastUpdate;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_board")
     private Board board;
@@ -25,8 +25,8 @@ public class Colonne {
     @JsonIgnore
     private List<Ticket> tickets;
 
-    public Colonne(String nom) {
-        this.nom = nom;
+    public Colonne(String name) {
+        this.name = name;
     }
 
     public Colonne() {
@@ -40,16 +40,16 @@ public class Colonne {
         return id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public Date getDateCreation() {
-        return dateCreation;
+    public Date getCreation() {
+        return creation;
     }
 
-    public Date getDateModification() {
-        return dateModification;
+    public Date getLastUpdate() {
+        return lastUpdate;
     }
 
     public Board getBoard() {
@@ -68,16 +68,16 @@ public class Colonne {
         this.id = id;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String nom) {
+        this.name = nom;
     }
 
-    public void setDateCreation(Date dateCreation) {
-        this.dateCreation = dateCreation;
+    public void setCreation(Date dateCreation) {
+        this.creation = dateCreation;
     }
 
-    public void setDateModification(Date dateModification) {
-        this.dateModification = dateModification;
+    public void setLastUpdate(Date dateModification) {
+        this.lastUpdate = dateModification;
     }
 
     public void setBoard(Board board) {
@@ -86,6 +86,6 @@ public class Colonne {
 
     @Override
     public String toString() {
-        return "Colonne: \nID: " + id + "\nNom: " + nom + "\nDate création: " + dateCreation + "\nDernière modification: " + dateModification + "\nBoard: " + board.getNom();
+        return "Colonne: \nID: " + id + "\nNom: " + name + "\nDate création: " + creation + "\nDernière modification: " + lastUpdate + "\nBoard: " + board.getName();
     }
 }

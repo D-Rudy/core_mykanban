@@ -13,18 +13,18 @@ public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "nom")
-    private String nom;
-    @Column(name = "date_creat")
-    private Date dateCreation;
-    @Column(name = "date_modif")
-    private Date dateModification;
+    @jakarta.persistence.Column(name = "nom")
+    private String name;
+    @jakarta.persistence.Column(name = "date_creat")
+    private Date creation;
+    @jakarta.persistence.Column(name = "date_modif")
+    private Date lastUpdate;
     @OneToMany(mappedBy = "board")
     @JsonIgnore
     private List<Colonne> colonnes;
 
     public Board(String boardName) {
-        this.nom = boardName;
+        this.name = boardName;
     }
 
     public Board() {
@@ -35,28 +35,28 @@ public class Board {
         this.id = l;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String nom) {
+        this.name = nom;
     }
 
     public long getId() {
         return id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public Date getDateCreation() {
-        return dateCreation;
+    public Date getCreation() {
+        return creation;
     }
 
-    public void setDateCreation(Date date) {
-        this.dateCreation = date;
+    public void setCreation(Date date) {
+        this.creation = date;
     }
 
-    public Date getDateModification() {
-        return dateModification;
+    public Date getLastUpdate() {
+        return lastUpdate;
     }
 
     public List<Colonne> getColonnes() {
@@ -69,7 +69,7 @@ public class Board {
 
     @Override
     public String toString() {
-        return "Board: \nID: " + id + "\nNom: " + nom + "\nDate de création: " + dateCreation + "\nDernière modification: " + dateModification;
+        return "Board: \nID: " + id + "\nNom: " + name + "\nDate de création: " + creation + "\nDernière modification: " + lastUpdate;
     }
 
 

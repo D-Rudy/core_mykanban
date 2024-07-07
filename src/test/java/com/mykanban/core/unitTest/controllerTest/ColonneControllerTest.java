@@ -44,7 +44,7 @@ public class ColonneControllerTest {
     @Test
     public void testCreateColonne() {
         ColonneCreationRequest creationRequest = new ColonneCreationRequest("Ma Colonne");
-        Colonne expectedColonne = new Colonne(creationRequest.nomColonne());
+        Colonne expectedColonne = new Colonne(creationRequest.colonneName());
 
         Mockito.when(colonneService.createColonne(Mockito.any())).thenReturn(expectedColonne);
         Colonne actualColonne = controller.createColonne(creationRequest);
@@ -53,7 +53,7 @@ public class ColonneControllerTest {
     }
 
     @Test
-    public void testGetColonne() throws ColonneNotFoundException {
+    public void testGetColumn() throws ColonneNotFoundException {
         long colonneId = 1L;
         Colonne expectedColonne = new Colonne("Ma Colonne");
 
@@ -66,7 +66,7 @@ public class ColonneControllerTest {
     }
 
     @Test
-    public void testGetColonneNotFound() throws ColonneNotFoundException {
+    public void testGetColumnNotFound() throws ColonneNotFoundException {
         long colonneId = 1L;
         Mockito.when(colonneService.getColonne(colonneId)).thenReturn(Optional.empty());
         assertThrows(ColonneNotFoundException.class, () -> controller.getColonne(colonneId));

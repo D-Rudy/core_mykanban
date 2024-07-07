@@ -23,7 +23,7 @@ public class BoardService {
 
 
     public Board createBoard(BoardCreationRequest boardCreationRequest) {
-        return boardRepository.save(new Board(boardCreationRequest.nomBoard()));
+        return boardRepository.save(new Board(boardCreationRequest.boardName()));
     }
 
     public List<Colonne> getColonnesByBoard(final long id) {

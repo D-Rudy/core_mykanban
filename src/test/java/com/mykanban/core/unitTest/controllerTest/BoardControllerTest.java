@@ -46,7 +46,7 @@ public class BoardControllerTest {
     @Test
     public void testCreateBoard() {
         BoardCreationRequest boardCreationRequest = new BoardCreationRequest("My Board");
-        Board expectedBoard = new Board(boardCreationRequest.nomBoard());
+        Board expectedBoard = new Board(boardCreationRequest.boardName());
 
         Mockito.when(boardService.createBoard(boardCreationRequest)).thenReturn(expectedBoard);
 

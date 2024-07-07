@@ -17,7 +17,7 @@ public class TicketService {
     }
 
     public Ticket createTicket(TicketCreationRequest ticketCreationRequest) {
-        return ticketRepository.save(new Ticket(ticketCreationRequest.titre(), ticketCreationRequest.description()));
+        return ticketRepository.save(new Ticket(ticketCreationRequest.title(), ticketCreationRequest.description()));
     }
 
     public Optional<Ticket> getTicket(long id) {

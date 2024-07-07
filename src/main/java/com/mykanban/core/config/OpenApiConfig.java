@@ -20,13 +20,13 @@ public class OpenApiConfig {
         server.setDescription("Development");
 
         Contact myContact = new Contact();
-        myContact.setName("Jane Doe");
+        myContact.setName("rdz");
         myContact.setEmail("your.email@gmail.com");
 
         Info information = new Info()
                 .title("MyKanban System API")
                 .version("1.0")
-                .description("This API expose endpoint to manage boards, column and tickets.")
+                .description("This API expose endpoint to manage boards, columns and tickets.")
                 .contact(myContact);
         return new OpenAPI().info(information).servers(List.of(server));
     }

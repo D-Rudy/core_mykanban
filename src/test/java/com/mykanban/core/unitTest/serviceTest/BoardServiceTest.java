@@ -6,7 +6,6 @@ import com.mykanban.core.repository.ColonneRepository;
 import com.mykanban.core.repository.entity.Board;
 import com.mykanban.core.repository.entity.Colonne;
 import com.mykanban.core.service.BoardService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -45,7 +44,7 @@ public class BoardServiceTest {
         Board actualBoard = boardService.createBoard(boardCreationRequest);
 
         Board capturedBoard = boardCaptor.getValue();
-        assertEquals("My Test Board", capturedBoard.getNom()); // Assert on captured board properties
+        assertEquals("My Test Board", capturedBoard.getName()); // Assert on captured board properties
         // Assert other expected properties if needed
     }
 
